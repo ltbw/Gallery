@@ -22,8 +22,9 @@ class GalleryAdapter:ListAdapter<PhotoItem,MyViewHolder> (DIFFCALLBACK){
         val holder = MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.gallery_cell,parent,false))
         holder.itemView.setOnClickListener {
             Bundle().apply {
-                putParcelable("PHOTO",getItem(holder.adapterPosition))
-                holder.itemView.findNavController().navigate(R.id.action_galleryFragment_to_photoItemFragment,this)
+               putParcelableArrayList("PHOTO_LIST", ArrayList(currentList))
+                putInt("PHOTO_POSITION",holder.adapterPosition)
+                holder.itemView.findNavController().navigate(R.id.action_galleryFragment_to_photoViewFragment,this)
             }
         }
         return holder
@@ -37,7 +38,7 @@ class GalleryAdapter:ListAdapter<PhotoItem,MyViewHolder> (DIFFCALLBACK){
         }
         Glide.with(holder.itemView)
             .load(getItem(position).previewUrl)
-            .placeholder(R.drawable.ic_photo_black_24dp)
+            .placeholder(R.drawable.viewphoto_placeholder)
             .listener(object :RequestListener<Drawable>{
                 override fun onLoadFailed(
                     e: GlideException?,
@@ -64,11 +65,11 @@ class GalleryAdapter:ListAdapter<PhotoItem,MyViewHolder> (DIFFCALLBACK){
     //返回加载的两个是否相同
     object DIFFCALLBACK: DiffUtil.ItemCallback<PhotoItem>() {
             override fun areItemsTheSame(oldItem: PhotoItem, newItem: PhotoItem): Boolean {
-                return oldItem === newItem
+                return oldItem.photoId == newItem.photoId
             }
 
         override fun areContentsTheSame(oldItem: PhotoItem, newItem: PhotoItem): Boolean {
-            return oldItem.photoId == newItem.photoId
+            return oldItem == newItem
         }
     }
 }

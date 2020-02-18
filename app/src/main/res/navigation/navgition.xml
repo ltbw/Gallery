@@ -11,12 +11,12 @@
         android:label="fragment_gallery"
         tools:layout="@layout/fragment_gallery" >
         <action
-            android:id="@+id/action_galleryFragment_to_photoItemFragment"
-            app:destination="@id/photoItemFragment" />
+            android:id="@+id/action_galleryFragment_to_photoViewFragment"
+            app:destination="@id/photoViewFragment" />
     </fragment>
     <fragment
-        android:id="@+id/photoItemFragment"
-        android:name="com.oashwe.gallery.PhotoItemFragment"
-        android:label="fragment_photo_item"
-        tools:layout="@layout/fragment_photo_item" />
+        android:id="@+id/photoViewFragment"
+        android:name="com.oashwe.gallery.PhotoViewFragment"
+        android:label="fragment_photo_view"
+        tools:layout="@layout/fragment_photo_view" />
 </navigation>
