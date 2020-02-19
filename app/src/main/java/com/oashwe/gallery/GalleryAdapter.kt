@@ -31,10 +31,17 @@ class GalleryAdapter:ListAdapter<PhotoItem,MyViewHolder> (DIFFCALLBACK){
     }
     //bind 即绑定 把数据和视图绑定
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.itemView.shimmerLayout.apply {
-            setShimmerColor(0x55FFFFFF)
-            setShimmerAngle(0)
-            startShimmerAnimation()
+        val photoItem = getItem(position)
+        with(holder.itemView){
+            shimmerLayout.apply {
+                setShimmerColor(0x55FFFFFF)
+                setShimmerAngle(0)
+                startShimmerAnimation()
+            }
+            textViewUser.text = photoItem.photoUser
+            textViewLikes.text = photoItem.photoLikes.toString()
+            textViewFavorites.text = photoItem.photoFavorites.toString()
+            photoView.layoutParams.height = photoItem.photoHeight
         }
         Glide.with(holder.itemView)
             .load(getItem(position).previewUrl)

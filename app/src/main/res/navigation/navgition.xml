@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/galleryFragment"
         android:name="com.oashwe.gallery.GalleryFragment"
-        android:label="fragment_gallery"
-        tools:layout="@layout/fragment_gallery" >
+        android:label="Gallery"
+        tools:layout="@layout/fragment_gallery">
         <action
             android:id="@+id/action_galleryFragment_to_photoViewFragment"
             app:destination="@id/photoViewFragment" />
@@ -17,6 +17,6 @@
     <fragment
         android:id="@+id/photoViewFragment"
         android:name="com.oashwe.gallery.PhotoViewFragment"
-        android:label="fragment_photo_view"
+        android:label="Photo"
         tools:layout="@layout/fragment_photo_view" />
 </navigation>
