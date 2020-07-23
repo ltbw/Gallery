@@ -1,2 +1,2 @@
 # Gallery
-一个小例子，使用MVVC框架
+使用pixabay的api写的一个画廊
